@@ -91,34 +91,3 @@ const result = document.querySelector('.result');
 const userScore = document.createElement('h2');
 const computerScore = document.createElement('h2')
 const gameResult = document.createElement('h2')
-
-
-
-
-
-//   playRound(playerSelection, computerPlay())
-
-// function game(){
-//     let computerWins = 0;
-//     let userWins = 0;
-//     for(let i =0; i < 5; i++){
-
-//         let results = playRound(playerSelection, computerPlay());
-//         if(results.includes('You Win')){
-//             userWins = userWins + 1;
-//         } else if(results.includes('You Lose')){
-//             computerWins = computerWins + 1
-//         } else {
-
-//         }
-//     }
-//     if(userWins > computerWins){
-//         return 'You Win!'
-//     } else if(userWins < computerWins){
-//         return 'You Lose!'
-//     } else {
-//         return 'Tie!'
-//     }
-// }
-
-console.log('Files are linked properly');
