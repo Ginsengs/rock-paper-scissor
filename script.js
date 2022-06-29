@@ -15,8 +15,9 @@ function computerPlay (){
 function playRound(playerSelection, computerSelection){
         playerSelection = playerSelection.toLowerCase();
         computerSelection = computerSelection.toLowerCase();
+  
 
-        if(playerSelection === 'rock ' && computerSelection === 'scissor'){
+        if(playerSelection === 'rock' && computerSelection === 'scissor'){
             return 'You Win! Rock beats Scissor'
 
         } else if(playerSelection === 'scissor' && computerSelection === 'rock'){
@@ -35,27 +36,58 @@ function playRound(playerSelection, computerSelection){
 
 }
 
-function game(){
-    let computerWins = 0;
-    let userWins = 0;
-    for(let i =0; i < 5; i++){
-        playerSelection = prompt('Rock, Paper, Scissor: ')
-        let results = playRound(playerSelection, computerPlay());
-        if(results.includes('You Win')){
-            userWins = userWins + 1;
-        } else if(results.includes('You Lose')){
-            computerWins = computerWins + 1
-        } else {
+const buttons = document.querySelectorAll('.btn');
 
-        }
-    }
-    if(userWins > computerWins){
-        return 'You Win!'
-    } else if(userWins < computerWins){
-        return 'You Lose!'
+buttons.forEach(but => but.addEventListener('click', myFunction));
+
+
+
+let computerWins = 0;
+let userWins = 0;
+
+function myFunction(e){
+
+    let playerSelection = e.target.classList['0'];
+    let computerSelection = computerPlay();
+    let results = playRound(playerSelection, computerPlay());
+
+    result.appendChild(userScore);
+    result.appendChild(computerScore);
+    console.log(playerSelection);
+    console.log(computerSelection);
+
+    if(results.includes('You Win')){
+        userWins = userWins + 1;
+    } else if(results.includes('You Lose')){
+        computerWins = computerWins + 1
     } else {
-        return 'Tie!'
+
     }
+
+    userScore.textContent = 'Your Score: ' +  userWins;
+    computerScore.textContent = 'Computer Score: ' + computerWins
+
+    if(userWins >= 5 || computerWins >= 5){
+        let finalResult = scoreKeeper(userWins, computerWins);
+        gameResult.textContent = finalResult;
+        result.appendChild(gameResult);
+    }
+
+
+
 }
 
-console.log(game());
+function scoreKeeper(userWins, computerWins){
+    buttons.forEach(but => but.removeEventListener('click', myFunction));
+    if(userWins >= 5 && userWins > computerWins){
+        return 'You Win'
+   } else if(computerWins >= 5 && computerWins > userWins){
+        return 'You Lose'
+   }
+   
+}
+
+const result = document.querySelector('.result');
+const userScore = document.createElement('h2');
+const computerScore = document.createElement('h2')
+const gameResult = document.createElement('h2')
